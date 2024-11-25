@@ -1,0 +1,36 @@
+pre {
+  padding: .5rem;
+  padding-left: 1rem;
+  background-color: var(--c-light-gray);
+  border-radius: 5px;
+  white-space: collapse;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+pre code {
+  flex-shrink: 1;
+  font-size: .8rem;
+}
+pre code span {
+
+  &[data-style="prop"] {
+    font-weight: 600;
+    color: var(--c-primary);
+    margin-right: 5px;    
+  }
+
+  &[data-style="var"] {
+    font-weight: 600;
+    cursor: help;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 2;
+
+    &:hover {
+      text-decoration-color: var(--c-primary);
+    }
+  }
+
+}

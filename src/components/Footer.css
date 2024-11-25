@@ -1,0 +1,31 @@
+footer {
+  display: flex;
+  padding: 3em 0 1em;
+  justify-content: center;
+  gap: 15px;
+}
+
+footer a {
+  display: inline-flex;
+  border-radius: 50px;
+  opacity: .3;
+  transition: opacity .2s;
+
+  img {
+    width: 30px;
+  }
+
+  &.inverted {
+    padding: 5px;
+    background-color: var(--c-white);
+    filter: invert(1);
+
+    img {
+      width: 20px;
+    }
+  }
+
+  &:hover {
+    opacity: .9;
+  }
+}

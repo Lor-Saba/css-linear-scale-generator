@@ -1,0 +1,48 @@
+.input-checkbox {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 28px;
+  user-select: none;
+
+  --input-checkbox-size: 16px;
+  --input-checkbox-padding: 4px;
+}
+.input-checkbox input {
+  display: none;
+}
+
+.input-checkbox div {
+  position: relative;
+  display: inline-block;
+  height: var(--input-checkbox-size);
+  width: calc(var(--input-checkbox-size) * 2);
+  border-radius: 30px;
+  background-color: var(--c-light-gray);  
+  padding: var(--input-checkbox-padding);
+  box-sizing: content-box;
+  transition: .2s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: var(--input-checkbox-padding);
+    display: inline-block;
+    width: var(--input-checkbox-size);
+    height: var(--input-checkbox-size);
+    border-radius: 100%;
+    background-color: var(--c-dark-gray);
+    transition: .2s;
+  }
+
+  &:has(input:checked) {
+    background-color: var(--c-primary);
+
+    &::before {
+      left: calc(var(--input-checkbox-size) + var(--input-checkbox-padding));
+      background-color: var(--c-white);
+    }   
+  } 
+}
+
