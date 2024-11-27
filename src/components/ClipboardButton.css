@@ -11,7 +11,7 @@
   opacity: .5;
 
   img {
-    transition: .2s;
+    transition: .1s;
   }
 
   img[data-type] {

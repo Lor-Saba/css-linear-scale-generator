@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import ClipboardButton from './ClipboardButton';
+import { Tooltip } from 'react-tooltip'
 
 import './ResultBox.css';
 import { useRef } from 'react';
@@ -34,15 +35,29 @@ export default function ResultBox(){
     return [ value, unit ];
   }
 
+  function Value({ children, title }) {
+    return (
+      <span 
+        data-style="var" 
+        data-tooltip-id="custom-tooltip" 
+        data-tooltip-place="bottom" 
+        data-tooltip-delay-show="200"
+        data-tooltip-content={title}
+      >
+        {children}
+      </span>
+    );
+  }
+
   function StateValue({ state, appendUnit = true, convertUnit, title }) {
     const [ value, unit ] = getStateValue(state, convertUnit ? convertUnit : convertToRem.value ? 'rem' : 'px');
 
-    return <span data-style="var" title={title}>{value}{appendUnit ? unit : ''}</span>;
+    return <Value title={title}>{value}{appendUnit ? unit : ''}</Value>;
+  }
+  function SimpleValue({ value, title }) {
+    return <Value title={title}>{value}</Value>;
   }
 
-  function SimpleValue({ value, title }) {
-    return <span data-style="var" title={title}>{value}</span>;
-  }
 
   function MinBlock({ children }){
     const [ leftValuePx ] = getStateValue(leftValue, 'px');
@@ -72,7 +87,7 @@ export default function ResultBox(){
 
     return (
       <>
-        calc(<StateValue state={leftValue} title='Left value' /> + calc(<SimpleValue value={rightValuePx - leftValuePx} title='Right value (px) - Left value (px)'/> * calc(calc(100vw - <StateValue state={leftViewportWidth} title='Left viewport value' />) / <SimpleValue value={rightViewportWidthPx - leftViewportWidthPx} title='Right viewport value (px) - Left viewport value (px)'/>)))
+        calc(<StateValue state={leftValue} title='Left value' /> + calc(<SimpleValue value={rightValuePx - leftValuePx} title='Right value (px) - Left value (px)'/> * calc(calc(100vw - <StateValue state={leftViewportWidth} title='Left viewport width' />) / <SimpleValue value={rightViewportWidthPx - leftViewportWidthPx} title='Right viewport width (px) - Left viewport width (px)'/>)))
       </>
     )
   }
@@ -87,9 +102,12 @@ export default function ResultBox(){
   </>;
 
   return (
-    <pre>
-      <code ref={codeRef}>{code}</code>
-      <ClipboardButton content={codeRef}/>
-    </pre>
+    <>
+      <pre>
+        <code ref={codeRef}>{code}</code>
+        <ClipboardButton content={codeRef}/>
+      </pre>
+      <Tooltip id="custom-tooltip" />
+    </>
   )
 }
