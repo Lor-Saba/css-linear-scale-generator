@@ -3,6 +3,7 @@ header {
 
   h1 {
     font-size: 1.8em;
+    font-size:min(1.8rem, max(1.3rem, calc(1.3rem + calc(8 * calc(calc(100vw - 20rem) / 360)))));
     margin: .5em 0;
   }
 

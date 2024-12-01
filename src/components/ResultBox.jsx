@@ -75,7 +75,7 @@ export default function ResultBox(){
     const cssFunctionName = +leftValuePx < +rightValuePx ? 'min' : 'max';
 
     return (
-      <>{cssFunctionName}(<StateValue state={rightValue} title='Right value' />, {children})</>
+      <>{cssFunctionName}(<StateValue state={rightValue} title='Right value' />, {children});</>
     );
   }
 

@@ -5,7 +5,7 @@ import './Footer.css';
 
 const FOOTER_LINKS = [
   { 
-    href: "https://github.com/Lor-Saba/cv", 
+    href: "https://cv-lor-saba.vercel.app/", 
     imageSrc: svgLs, 
     title: "Main page", 
     inverted: true 
@@ -22,7 +22,7 @@ export default function Footer(){
   return (
     <footer>
       {FOOTER_LINKS.map((item, index) => 
-        <a key={index} href={item.href} title={item.title} className={item.inverted ? 'inverted' : null}>
+        <a key={index} href={item.href} target="_blank" title={item.title} className={item.inverted ? 'inverted' : null}>
           <img src={item.imageSrc}></img>
         </a>
       )}

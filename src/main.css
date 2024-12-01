@@ -26,6 +26,7 @@
 
 body {
   margin: 0;
+  padding: 30px;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -52,6 +53,7 @@ h1 {
 @media only screen and (max-width: 680px) {
   body {
     background: #f2f2f7;
+    padding: 0;
   }
   #root {
     padding: 1.5rem;
